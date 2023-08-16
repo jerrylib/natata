@@ -1,0 +1,16 @@
+<!--pages/game/game.wxml-->
+<view class="main">
+  <view class="header">
+    <view>
+      <text class="reset" bindtap="reset">重置</text>
+    </view>
+    <view>
+      <text>第 {{level}} 关</text>
+    </view>
+    <view>
+      <text>分数: {{score}}</text>
+    </view>
+  </view>
+  <view class="item" style="{{item.backgroundColor}}" wx:for="{{array}}" wx:key="name" data-index="{{index}}" bindtap="triggerIndex">
+  </view>
+</view>
