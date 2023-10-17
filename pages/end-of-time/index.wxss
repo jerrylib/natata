@@ -1,0 +1,43 @@
+/* pages/end-of-time/index.wxss */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: conic-gradient(#f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: calc(50vh - 40px);
+  bottom: calc(50vh - 40px);
+  left: 20px;
+  right: 20px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.text {
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 50rpx 20rpx;
+  border-radius: 20rpx;
+  position: relative;
+}
+
+
+
+.seconds {
+  font-size: 0.8rem;
+  width: 400px;
+  font-weight: normal;
+  margin: 0 10rpx;
+}
+
+.canvas-container {
+  position: absolute;
+  right: 100%;
+  bottom: 100%;
+}

@@ -1,12 +1,13 @@
 {
   "pages":[
     "pages/home/index",
-    "pages/color-picker/index"
+    "pages/color-picker/index",
+    "pages/end-of-time/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "托斯嘎",
     "navigationBarTextStyle":"black",
     "pageOrientation": "auto"
   },

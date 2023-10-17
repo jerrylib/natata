@@ -1,3 +1,7 @@
+.container {
+  height: 100vh;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -12,12 +16,14 @@
   margin: 20rpx;
   border-radius: 50%;
 }
-
-.usermotto {
-  margin-top: 200px;
+.userinfo-nickname{
 }
 
-.btn{
+.usermotto {
+  margin-top: 200rpx;
+}
+
+.btn {
   background-color: lightgreen;
   color: #fff;
 }

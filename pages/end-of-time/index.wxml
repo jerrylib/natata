@@ -1,0 +1,8 @@
+<!--pages/end-of-time/index.wxml-->
+<view class="container">
+  <text class="text">倒计时:<text class="seconds">{{endOfTimestamp}}</text>天
+  </text>
+</view>
+<view class="canvas-container">
+  <canvas  type="2d" id="myCanvas"></canvas>
+</view>

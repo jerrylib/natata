@@ -6,19 +6,20 @@ Page({
    * Page initial data
    */
   data: {
-    hasUserInfo:false,
     userInfo: {},
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    hasUserInfo: false
   },
   startGame() {
     wx.navigateTo({
       url: '../color-picker/index'
     })
   },
+  goToEndOfTime() {
+    wx.navigateTo({
+      url: '../end-of-time/index'
+    })
+  },
   getUserProfile(e) {
-    console.log('loadData')
     wx.getUserProfile({
       desc: '获取用户头像和昵称信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
@@ -29,25 +30,15 @@ Page({
         })
       }
     })
-    // wx.getUserInfo({
-    //   success: (res) => {
-    //     console.log('res=', res)
-    //     this.setData({
-    //       userInfo: res.userInfo
-    //     })
-    //   },
-    // })
+  },
+  noLogin() {
+    wx.exitMiniProgram();
   },
   /**
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
-    this.getUserProfile()
+
   },
 
   /**

@@ -1,28 +1,18 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
+    <block>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}111</text>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <view wx:if="userInfo">
-      <Button type="primary" class="btn" bindtap="startGame">进入游戏</Button>
-    </view>
-    <view wx:else>
-      <Button type="primary" class="btn" bindtap="startGame">用户登录</Button>
-    </view>
+  <view class="usermotto" wx:if="{{hasUserInfo}}">
+    <Button type="primary" class="btn" bindtap="startGame">进入游戏</Button>
+    <Button style="margin-top:1rem;" type="primary" class="btn" bindtap="goToEndOfTime">进入倒计时</Button>
+    <Button type="primary" style="margin-top:1rem;" bindtap="noLogin">退出游戏</Button>
+  </view>
+  <view class="usermotto" wx:elif="{{!hasUserInfo}}">
+    <Button type="primary" class="btn" bindtap="getUserProfile">获取用户信息</Button>
+    <Button type="primary" style="margin-top:1rem;" bindtap="noLogin">退出游戏</Button>
   </view>
 </view>
