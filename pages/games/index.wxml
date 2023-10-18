@@ -1,0 +1,6 @@
+<!--pages/games/index.wxml-->
+<view class="container">
+  <view class="item" bindtap="gotoColorPicker">color-picker</view>
+  <view class="item" bindtap="gotoScore">积分赛</view>
+  <view class="item" bindtap="gotoEndOfTime">倒计时</view>
+</view>
