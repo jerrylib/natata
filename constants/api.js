@@ -1,0 +1,1 @@
+export const API_SERVICE = 'https://natata1-api.abb-fj.com'
