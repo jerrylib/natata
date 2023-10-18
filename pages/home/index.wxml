@@ -1,18 +1,24 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<page-layout>
+  <view slot="header">
+    <header-navbar title="个人信息"></header-navbar>
   </view>
-  <view class="usermotto" wx:if="{{hasUserInfo}}">
-    <Button type="primary" class="btn" bindtap="startGame">进入游戏</Button>
-    <Button style="margin-top:1rem;" type="primary" class="btn" bindtap="goToEndOfTime">进入倒计时</Button>
-    <Button type="primary" style="margin-top:1rem;" bindtap="noLogin">退出游戏</Button>
+  <!-- 关键代码 start -->
+  <view slot="scroll" class="content">
+    <view class="row">
+      <view class="text1">头像：</view>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{userInfo.avatar || ''}}"></image>
+      </button>
+    </view>
+    <view class="row">
+      <view class="text1">昵称：</view>
+      <input type="nickname" class="name-input" name="nickname" value="{{userInfo.name || ''}}" bindchange="onInput" placeholder="请输入昵称" />
+    </view>
   </view>
-  <view class="usermotto" wx:elif="{{!hasUserInfo}}">
-    <Button type="primary" class="btn" bindtap="getUserProfile">获取用户信息</Button>
-    <Button type="primary" style="margin-top:1rem;" bindtap="noLogin">退出游戏</Button>
+  <!-- 关键代码 end -->
+  <view slot="bottom" class="info__footer">
+    <button type="primary" bindtap="tapSave">提交</button>
+    <button bindtap="noLogin">退出</button>
   </view>
-</view>
+</page-layout>

@@ -1,92 +1,114 @@
-// pages/home/index.js
-const app = getApp()
+import {
+  API_SERVICE
+} from './../../constants/api'
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-    userInfo: {},
-    hasUserInfo: false
+    hasUserInfo: false,
+    userInfo: {
+      tel: '',
+      name: '',
+      avatar: '',
+      wx_open_id: '',
+    }
   },
-  startGame() {
-    wx.navigateTo({
-      url: '../color-picker/index'
-    })
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    this.getUserInfo()
   },
-  goToEndOfTime() {
-    wx.navigateTo({
-      url: '../end-of-time/index'
-    })
-  },
-  getUserProfile(e) {
-    wx.getUserProfile({
-      desc: '获取用户头像和昵称信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+  // 最终提交保存
+  async tapSave() {
+    console.log(this.data.userInfo);
+    // return
+    wx.request({
+      url: API_SERVICE + '/api/user',
+      method: 'POST',
+      data: {
+        "avatar": this.data.userInfo.avatar,
+        "name": this.data.userInfo.name,
+        "wx_open_id": this.data.userInfo.wx_open_id
+      },
       success: (res) => {
-        console.log('res=', res.userInfo)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+        console.log('res', res);
+        wx.showToast({
+          title: '提交成功',
+          icon: 'none'
+        })
+        wx.navigateTo({
+          url: '../games/index'
         })
       }
     })
   },
+  // 输入昵称
+  onInput(e) {
+    const {
+      value
+    } = e.detail
+    console.log('输入昵称', value);
+    this.setData({
+      userInfo: {
+        ...this.data.userInfo,
+        name: value
+      }
+    })
+  },
+  // 选择头像
+  onChooseAvatar(e) {
+    console.log('选择头像', e);
+    const {
+      avatarUrl
+    } = e.detail
+    this.setData({
+      ['userInfo.avatar']: avatarUrl
+    })
+  },
+  async getUserInfo() {
+    wx.showLoading({
+      title: '用户数据加载中...',
+    })
+    wx.login({
+      success: (res) => {
+        if (res.code) {
+          // 获取到用户登录凭证 code
+          const code = res.code;
+          // 将 code 发送给后端服务器
+          wx.request({
+            url: API_SERVICE + '/api/wx',
+            data: {
+              code: code
+            },
+            method: 'POST',
+            success: (res) => {
+              console.log('res.data=', res.data);
+              if (!!res.data.id) {
+                wx.navigateTo({
+                  url: '../games/index'
+                });
+                return
+              }
+              this.setData({
+                userInfo: res.data,
+                hasUserInfo: false
+              })
+            },
+            fail: (err) => {
+              console.error('请求后端接口失败', err);
+              wx.hideLoading();
+            },
+          });
+        } else {
+          console.error('获取用户登录凭证失败', res.errMsg);
+        }
+      },
+      fail: (err) => {
+        console.error('调用 wx.login 失败', err);
+        wx.hideLoading();
+      },
+    });
+  },
   noLogin() {
     wx.exitMiniProgram();
   },
-  /**
-   * Lifecycle function--Called when page load
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide() {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage() {
-
-  }
 })

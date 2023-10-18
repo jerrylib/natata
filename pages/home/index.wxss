@@ -1,29 +1,58 @@
-.container {
-  height: 100vh;
+.content {
+  padding: 20rpx;
 }
 
-.userinfo {
+.info__footer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 80rpx;
+  padding-top: 20rpx;
+  background: #fff;
+}
+
+.info__footer .footer-btn {
+  width: 398rpx;
+}
+
+.footer-btn {
+  background: linear-gradient(90deg, #34AAFF 0%, #0A73EE 100%) !important;
+  border: none !important;
+}
+
+.footer-btn::after {
+  border: none !important;
+}
+
+.content .row {
+  display: flex;
   align-items: center;
-  color: #aaa;
+  height: 110rpx;
+  padding-left: 20rpx;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+.content .text1 {
+  flex: 2;
+}
+
+.content .name-input,
+.content .avatar-wrapper {
+  flex: 6;
+  text-align: right;
+}
+
+.content .avatar-wrapper::after {
+  border: none !important;
+}
+
+.content .avatar-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content .avatar-wrapper .avatar {
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
-}
-.userinfo-nickname{
-}
-
-.usermotto {
-  margin-top: 200rpx;
-}
-
-.btn {
-  background-color: lightgreen;
-  color: #fff;
 }
