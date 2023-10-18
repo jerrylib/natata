@@ -2,19 +2,19 @@
   "pages":[
     "pages/home/index",
     "pages/color-picker/index",
-    "pages/end-of-time/index"
+    "pages/end-of-time/index",
+    "pages/games/index",
+    "pages/score/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "托斯嘎",
-    "navigationBarTextStyle":"black",
-    "pageOrientation": "auto"
+    "navigationBarTextStyle":"black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "resizable": true,
-  "pageOrientation":"auto",
   "permission": {
     "scope.userLocation": {
       "desc": "获取用户头像和昵称信息"
