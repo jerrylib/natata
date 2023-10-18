@@ -1,0 +1,43 @@
+/* pages/score/index.wxss */
+.container {
+  height: 100vh;
+  padding: 1rem;
+}
+
+.item {
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 10rpx;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  background-color: rgb(211, 181, 115);
+}
+
+.name {
+  font-weight: bold;
+  text-align: left;
+}
+
+.item:nth-child(odd) {
+  background-color: rgb(106, 151, 218);
+}
+
+.input {
+  border: 1px solid #f6f6f6;
+  width: 300rpx;
+  box-shadow: -5rpx 5rpx gray;
+  background: #fff;
+}
+
+.button-group {
+  border-top: 1px solid #f4f4f4;
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.reset {
+  border: 1px solid red;
+  background: #fff;
+  color: red;
+  margin-top: 1rem;
+}

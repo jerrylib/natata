@@ -1,0 +1,16 @@
+<!--pages/score/index.wxml-->
+<view class="container">
+  <checkbox-group bindchange="checkboxChange">
+    <view class="item" wx:for="{{options}}" wx:for-item="item" wx:key="index">
+      <view>
+        <checkbox checked="{{selectFlag[index]}}" value="{{item}}"></checkbox>
+        <text class="name">{{item}}</text>
+      </view>
+      <input class="input" value="{{inputValue[index]}}" type="text" data-index="{{index}}" placeholder="请输入分数" bindinput="handleInputChange"></input>
+    </view>
+  </checkbox-group>
+  <view class="button-group">
+    <button type="primary" bind:tap="submit">提交</button>
+    <button class="reset" bind:tap="reset">重置</button>
+  </view>
+</view>
