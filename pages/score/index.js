@@ -47,6 +47,7 @@ Page({
     })
   },
   submit() {
+    const that = this
     const inputValue = this.data.inputValue
     const selectFlag = this.data.selectFlag
     const result = options.map((item, index) => {
@@ -70,6 +71,7 @@ Page({
           wx.showToast({
             title: '数据提交成功',
           })
+          that.reset()
         } else {
           wx.showToast({
             title: res.data.message,

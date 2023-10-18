@@ -56,3 +56,9 @@
   height: 100rpx;
   border-radius: 50%;
 }
+
+.error-text {
+  display: block;
+  color: red;
+  text-align: center;
+}

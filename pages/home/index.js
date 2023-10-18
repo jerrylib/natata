@@ -4,6 +4,7 @@ import {
 Page({
   data: {
     hasUserInfo: false,
+    error: false,
     userInfo: {
       tel: '',
       name: '',
@@ -96,6 +97,9 @@ Page({
             fail: (err) => {
               console.error('请求后端接口失败', err);
               wx.hideLoading();
+              this.setData({
+                error: true
+              })
             },
           });
         } else {
@@ -105,6 +109,9 @@ Page({
       fail: (err) => {
         console.error('调用 wx.login 失败', err);
         wx.hideLoading();
+        this.setData({
+          error: true
+        })
       },
     });
   },

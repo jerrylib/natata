@@ -7,18 +7,19 @@
   <view slot="scroll" class="content">
     <view class="row">
       <view class="text1">头像：</view>
-      <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <button class="avatar-wrapper" disabled="{{error}}" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
         <image class="avatar" src="{{userInfo.avatar || ''}}"></image>
       </button>
     </view>
     <view class="row">
       <view class="text1">昵称：</view>
-      <input type="nickname" class="name-input" name="nickname" value="{{userInfo.name || ''}}" bindchange="onInput" placeholder="请输入昵称" />
+      <input type="nickname" disabled="{{error}}" class="name-input" name="nickname" value="{{userInfo.name || ''}}" bindchange="onInput" placeholder="请输入昵称" />
     </view>
   </view>
   <!-- 关键代码 end -->
+  <view wx:if="{{error}}" class="error-text">用户数据加载失败，请退出重试！</view>
   <view slot="bottom" class="info__footer">
-    <button type="primary" bindtap="tapSave">提交</button>
+    <button type="primary" disabled="{{error}}" bindtap="tapSave">提交</button>
     <button bindtap="noLogin">退出</button>
   </view>
 </page-layout>
