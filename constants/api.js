@@ -1,1 +1,1 @@
-export const API_SERVICE = 'https://natata-api.abb-fj.com'
+export const API_SERVICE = 'https://natata-api.vercel.app'
